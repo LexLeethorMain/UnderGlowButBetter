@@ -52,6 +52,7 @@ const createProxyUrl = (url, baseUrl) => {
     return url;
 };
 
+// Proxy endpoint must come BEFORE static file serving
 app.get('/script.js', async (req, res) => {
     const { q } = req.query; // url to proxy
 
@@ -127,11 +128,12 @@ app.get('/script.js', async (req, res) => {
     }
 });
 
+app.use(express.static(__dirname));
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'fuskian.html'));
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'fuskian.html'));
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.listen(port, () => {
