@@ -1,11 +1,9 @@
-/* General Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body Styling */
 body {
     background-color: #000;
     color: #fff;
@@ -18,7 +16,6 @@ body {
     overflow: hidden;
 }
 
-/* Rainbow Glow Effect for H1 */
 @keyframes glow {
     0% { text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff0000; }
     14% { text-shadow: 0 0 10px #ff7f00, 0 0 20px #ff7f00, 0 0 30px #ff7f00; }
@@ -40,7 +37,6 @@ h1 {
     letter-spacing: 2px;
 }
 
-/* Search Form Styling */
 #searchForm {
     display: flex;
     justify-content: center;
@@ -91,10 +87,10 @@ button:active {
     transform: scale(0.95);
 }
 
-/* Iframe Styling */
+/* make shit look better w the frame */
 #iframe {
     width: 95%;
-    height: calc(100vh - 150px); /* 10px below search bar to 10px above bottom */
+    height: calc(100vh - 150px); 
     border: none;
     border-radius: 15px;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
