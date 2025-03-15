@@ -1,4 +1,5 @@
-<!DOCTYPE html> <!-- Yea I gave yp on curse for a bit.. so what? (same functionality probably) -->
+<!DOCTYPE html>
+<!-- Yea I gave up on curse for a bit.. so what? (same functionality probably) -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,9 +8,21 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-        <div container="iframe"> <!-- Frame to diff HTML source for specific purposes -->
-            <iframe src="fuskian.html"></iframe>
+    <h1>UnderGlow</h1>
+    <form id="searchForm">
+        <input type="text" id="searchInput" placeholder="Search Anything">
+        <button type="submit">Go</button>
+    </form>
+    <iframe id="iframe" src=""></iframe>
 
-        </div>
+    <script>
+        document.getElementById('searchForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const input = document.getElementById('searchInput').value.trim();
+            const isUrl = /^(https?:\/\/)|(\.[a-z]{2,})$/i.test(input);
+            const proxyUrl = isUrl ? `/script.js?q=${encodeURIComponent(input)}` : `/script.js?q=${encodeURIComponent(`https://searx.me/search?q=${input}`)}`;
+            document.getElementById('iframe').src = proxyUrl;
+        });
+    </script>
 </body>
 </html>
