@@ -1,15 +1,26 @@
-<!DOCTYPE html> <!-- Yea I gave yp on curse for a bit.. so what? (same functionality probably) -->
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta aria-description="UnderGlow | Light Up Your Day"> <!-- description for when the link is sent somewhere -->
-    <title>UnderGlow</title>
-    <link rel="stylesheet" href="index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="fanskii.css">
 </head>
 <body>
-        <div container="iframe"> <!-- Frame to diff HTML source for specific purposes -->
-            <iframe src="093d09i010d3u09kiwq09d0q9k3d.html"></iframe>
+<h1>UnderGlow</h1>
+<form id="searchForm">
+    <input type="text" id="searchInput" placeholder="Search Anything">
+    <button type="submit">Go</button>
+</form>
+<iframe id="iframe" src=""></iframe>
 
-        </div>
+<script>
+    document.getElementById('searchForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const input = document.getElementById('searchInput').value.trim();
+        const isUrl = /^(https?:\/\/)|(\.[a-z]{2,})$/i.test(input);
+        const proxyUrl = isUrl ? `/wiggle/flow.js?q=${encodeURIComponent(input)}` : `/wiggle/flow.js?q=${encodeURIComponent(`https://searx.me/search?q=${input}`)}`;
+        document.getElementById('iframe').src = proxyUrl;
+    });
+</script>
 </body>
 </html>
