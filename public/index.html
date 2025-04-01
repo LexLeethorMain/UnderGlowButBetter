@@ -20,7 +20,7 @@
             e.preventDefault();
             const input = document.getElementById('searchInput').value.trim();
             const isUrl = /^(https?:\/\/)|(\.[a-z]{2,})$/i.test(input);
-            const proxyUrl = isUrl ? `/wiggle.flow.js?q=${encodeURIComponent(input)}` : `/wiggle/flow.js?q=${encodeURIComponent(`https://searx.me/search?q=${input}`)}`;
+            const proxyUrl = isUrl ? `/wiggle/flow.js?q=${encodeURIComponent(input)}` : `/wiggle/flow.js?q=${encodeURIComponent(`https://searx.me/search?q=${input}`)}`;
             document.getElementById('iframe').src = proxyUrl;
         });
     </script>
