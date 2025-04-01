@@ -36,7 +36,7 @@ const isAbsoluteURL = (url) => {
 
 const createProxyUrl = (url, baseUrl) => {
   if (!url) return url;
-  if (url.startsWith('/api/flow.js')) return url; //edit to be flow js 
+  if (url.startsWith('/wiggle/flow.js')) return url; //edit to be flow js 
 
   if (isAbsoluteURL(url)) {
     return `/wiggle/flow.js?q=${encodeURIComponent(url)}`;
@@ -135,7 +135,7 @@ app.use(express.static('public'));
 // you fucker.                                                                                                                                                                                 you aint nothing but a broke fein lmaoooooooooooooooooooooooooooooo
 // luh u too pooks
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', '093d09i010d3u09kiwq09d0q9k3d.html')); //update for da underglow file sys
+  res.sendFile(path.join(__dirname, 'public', 'index.html')); //update for da underglow file sys
 });
 
 app.listen(port, () => {
