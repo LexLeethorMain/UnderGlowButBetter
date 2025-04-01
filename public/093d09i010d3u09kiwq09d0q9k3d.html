@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="fanskii.css">
+</head>
+<body>
+<h1>UnderGlow</h1>
+<form id="searchForm">
+    <input type="text" id="searchInput" placeholder="Search Anything">
+    <button type="submit">Go</button>
+</form>
+<iframe id="iframe" src=""></iframe>
+
+<script>
+    document.getElementById('searchForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const input = document.getElementById('searchInput').value.trim();
+        const isUrl = /^(https?:\/\/)|(\.[a-z]{2,})$/i.test(input);
+        const proxyUrl = isUrl ? `/wiggle/flow.js?q=${encodeURIComponent(input)}` : `/script.js?q=${encodeURIComponent(`https://searx.me/search?q=${input}`)}`;
+        document.getElementById('iframe').src = proxyUrl;
+    });
+</script>
+</body>
+</html>
