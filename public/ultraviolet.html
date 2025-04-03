@@ -5,14 +5,23 @@
   </head>
   <style> /* PLS WORK */
     iframe {
-    width: 95%;
-    height: calc(100vh - 150px); 
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-    background-color: #111;
-    margin-top: 10px;
-    margin-bottom: 10px;
+            width: 95%;
+            height: calc(100vh - 200px); 
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            background-color: #111;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        [container="iframe"] {
+            width: 95%;
+            display: flex;
+            justify-content: center;
+        }
+        [container="iframe"] iframe {
+            width: 100%; 
+        } /* im pretty much fix it felix */
   </style>
   <body>
     <div container=iframe>
