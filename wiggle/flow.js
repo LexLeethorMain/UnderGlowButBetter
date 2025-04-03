@@ -1,4 +1,4 @@
-import axios from 'axios'; //fixy vercel (ima kms)
+import axios from 'axios'; //wasn't working so I let project auto debug it.
 import express from 'express';
 import path from 'path';
 import rateLimit from 'express-rate-limit';
@@ -11,15 +11,11 @@ const __dirname = dirname(__filename);
 const app = express();
 const port = process.env.PORT || 3000;
 
-// no ddos monkey
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 500,
 });
 app.use(limiter);
-
-// comment hahah\
-// oreo is goofy 
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
@@ -36,31 +32,26 @@ const isAbsoluteURL = (url) => {
 
 const createProxyUrl = (url, baseUrl) => {
   if (!url) return url;
-  if (url.startsWith('/wiggle/flow.js')) return url; //edit to be flow js 
-
+  if (url.startsWith('/api/flow.js')) return url;
   if (isAbsoluteURL(url)) {
-    return `/wiggle/flow.js?q=${encodeURIComponent(url)}`;
+    return `/api/flow.js?q=${encodeURIComponent(url)}`;
   }
-
   if (baseUrl) {
     const base = new URL(baseUrl);
     const absoluteUrl = new URL(url, base).href;
-    return `/wiggle/flow.js?q=${encodeURIComponent(absoluteUrl)}`;
+    return `/api/flow.js?q=${encodeURIComponent(absoluteUrl)}`;
   }
-
-  // Fallback cuz why not
   return url;
 };
 
-app.get('/wiggle/flow.js', async (req, res) => {
-  const { q } = req.query; // url to proxyer
+app.get('/api/flow.js', async (req, res) => {
+  const { q } = req.query;
 
   if (!q) {
     return res.status(400).json({ error: 'Missing query parameter: q' });
   }
 
   try {
-    // hehe, only skids use applewebkit 
     const response = await axios.get(q, {
       responseType: 'arraybuffer',
       headers: {
@@ -73,7 +64,6 @@ app.get('/wiggle/flow.js', async (req, res) => {
 
     let contentType = response.headers['content-type'] || '';
     res.setHeader('Content-Type', contentType);
-    // caching cuz speeds 
     res.setHeader('Cache-Control', 'public, max-age=3600');
 
     if (contentType.includes('text/html')) {
@@ -89,14 +79,12 @@ app.get('/wiggle/flow.js', async (req, res) => {
         (match, quote, url) => `url(${quote}${createProxyUrl(url, q)}${quote})`
       );
 
-     
       htmlContent = htmlContent.replace(
         /<form([^>]*)action="([^"]*)"([^>]*)>/g,
         (match, before, url, after) =>
           `<form${before}action="${createProxyUrl(url, q)}"${after}>`
       );
 
-      
       htmlContent = htmlContent.replace(
         /window\.location\.href\s*=\s*['"]([^'"]+)['"]/g,
         (match, url) => `window.location.href='${createProxyUrl(url, q)}'`
@@ -108,7 +96,6 @@ app.get('/wiggle/flow.js', async (req, res) => {
           `<script${before}src="${createProxyUrl(url, q)}"${after}>`
       );
 
-      // Rewrite <iframe> tags (this fo all you youtube bitches)
       htmlContent = htmlContent.replace(
         /<iframe([^>]*)src="([^"]*)"([^>]*)>/gi,
         (match, before, url, after) =>
@@ -117,7 +104,6 @@ app.get('/wiggle/flow.js', async (req, res) => {
 
       res.send(htmlContent);
     } else {
-      // odawisee raw data
       res.send(response.data);
     }
   } catch (error) {
@@ -129,13 +115,10 @@ app.get('/wiggle/flow.js', async (req, res) => {
   }
 });
 
-// startic
 app.use(express.static('public'));
-// im quoting that⬆️
-// you fucker.                                                                                                                                                                                 you aint nothing but a broke fein lmaoooooooooooooooooooooooooooooo
-// luh u too pooks
+
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html')); //update for da underglow file sys
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.listen(port, () => {
