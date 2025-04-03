@@ -71,7 +71,7 @@
             if (!isUrl) {
                 url = `https://www.google.com/search?q=${input}`;
             }
-            const proxyUrl = `/wiggle/flow.js?q=${encodeURIComponent(url)}`; //proxy da ho
+            const proxyUrl = `/api/flow.js?q=${encodeURIComponent(url)}`; //proxy da ho
             document.getElementById('iframe').src = proxyUrl;
         });
     </script>
