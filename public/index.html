@@ -16,8 +16,8 @@
        
     <div class="footer"> <!-- fooger -->
         <div class="footer-nav">
-            <a href="/ultraviolet.html"><button class="footer-button">Ultraviolet</button></a>
-            <a href="/scramjet"><button class="footer-button">Scramjet</button></a>
+            <a href="/ultraviolet.html"><button class="footer-button">Ultraviolet</button></a> <!-- God this shit never works -->
+            <a href="/scramjet"><button class="footer-button">Scramjet</button></a> <!-- Bypass for scramjet soon????????? -->
             <a href="/test.html"><button class="footer-button">Open</button></a>
         </div>
     </div>
@@ -34,7 +34,7 @@
                 url = 'https://' + input;
             }
             if (!isUrl) {
-                url = `https://searx.bndkt.io/search?q=${input}`; // searx on top frfr
+            url = `https://searx.bndkt.io/search?q=${input}`; // searx on top frfr
             }
             const proxyUrl = `/api/flow.js?q=${encodeURIComponent(url)}`; //proxy da ho
             document.getElementById('iframe').src = proxyUrl;
