@@ -3,24 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnderGlow</title>
     <link rel="stylesheet" href="style.css">
+    <style> /* test styles*/
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        #searchForm {
+            display: flex;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+        #searchInput {
+            flex: 1;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px 0 0 4px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #357ae8;
+        }
+        #iframe {
+            width: 100%;
+            height: 80vh;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-<h1>UnderGlow</h1>
-<form id="searchForm">
-    <input type="text" id="searchInput" placeholder="Search Anything">
-    <button type="submit">Go</button>
-</form>
-<iframe id="iframe" src=""></iframe>
+    <h1>UnderGlow</h1>
+    <form id="searchForm">
+        <input type="text" id="searchInput" placeholder="Search or enter URL">
+        <button type="submit">Go</button>
+    </form>
+    <iframe id="iframe" src="about:blank"></iframe>
 
-<script>
-    document.getElementById('searchForm').addEventListener('submit', function (e) {
-        e.preventDefault();
-        const input = document.getElementById('searchInput').value.trim();
-        const isUrl = /^(https?:\/\/)|(\.[a-z]{2,})$/i.test(input);
-        const proxyUrl = isUrl ? `/wiggle/flow.js?q=${encodeURIComponent(input)}` : `/wiggle/flow.js?q=${encodeURIComponent(`https://searx.me/search?q=${input}`)}`;
-        document.getElementById('iframe').src = proxyUrl;
-    });
-</script>
+    <script>
+        document.getElementById('searchForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const input = document.getElementById('searchInput').value.trim();
+            const isUrl = input.includes('.') && 
+                         (/^(https?:\/\/)/.test(input) || 
+                          /^([a-z0-9]([a-z0-9-]*[a-z0-9])?\.)+[a-z]{2,}(\/.*)?$/i.test(input));
+            let url = input;
+            if (isUrl && !input.startsWith('http')) {
+                url = 'https://' + input;
+            }
+            if (!isUrl) {
+                url = `https://www.google.com/search?q=${input}`;
+            }
+            const proxyUrl = `/wiggle/flow.js?q=${encodeURIComponent(url)}`; //proxy da ho
+            document.getElementById('iframe').src = proxyUrl;
+        });
+    </script>
 </body>
 </html>
