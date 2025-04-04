@@ -268,8 +268,8 @@
     
     <div class="game-grid" id="gameGrid">
         <div class="game-box">
-            <img src="path to image" alt="Game 1" class="game-image">
-            <div class="game-name">Neon Racer</div>
+            <img src="path to image" alt="imahe" class="game-image">
+            <div class="game-name">Yohoho IO</div>
         </div>
         
         <div class="game-box">
@@ -298,35 +298,30 @@
         </div>
     </div>
     
-    <div class="footer">
-        <nav class="footer-nav">
-            <button class="footer-button">Popular</button>
-            <button class="footer-button">New Games</button>
-            <button class="footer-button">Action</button>
-            <button class="footer-button">Adventure</button>
-            <button class="footer-button">Puzzle</button>
-            <button class="footer-button">Racing</button>
-        </nav>
+    <div class="footer"> <!-- fooger -->
+        <div class="footer-nav">
+            <a href="/ultraviolet.html"><button class="footer-button">Ultraviolet</button></a> <!-- God this shit never works -->
+            <a href="/scramjet"><button class="footer-button">Scramjet</button></a> <!-- Bypass for scramjet soon????????? -->
+            <a href="/rammerhead/public/index.html"><button class="footer-button">Rammerhead</button></a>
+            <a href="index.html"><button class="footer-button">Underglow</button></a>
+            <a href="/Games"><button class="footer-button">Games</button></a>
+        </div>
     </div>
     
     <script>
         const games = [
-            { name: "YoHoHo IO", image: "imag for youoyohooh", path: "gam peth" }, // make dem all place holders muahHahahA
+            { name: "YoHoHo IO", image: "imag for youoyohooh", path: "/yohoho.html" }, // make dem all place holders muahHahahA
             { name: "willy wanker", image: "path to image", path: "path to game" },
             { name: "idek", image: "path to image", path: "path to game" },
             { name: "Game i think", image: "path to image", path: "path to game" },
             { name: "another game", image: "path to image", path: "path to game" },
             { name: "holy shit another game", image: "path to image", path: "path to game" }
         ];
-        
-        // Search functionality
         document.getElementById('searchForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
             searchGames(searchTerm);
         });
-        
-        // Also trigger search as the user types (optional)
         document.getElementById('searchInput').addEventListener('input', function() {
             const searchTerm = this.value.toLowerCase().trim();
             searchGames(searchTerm);
