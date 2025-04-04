@@ -1,5 +1,5 @@
-importScripts('/uv.bundle.js'); //edit for underglow
-importScripts('/uv.config.js'); //change da hoe for unda glow
+importScripts('/uv/uv.bundle.js'); //edit for underglow
+importScripts('/uv/uv.config.js'); //change da hoe for unda glow
 
 class UVServiceWorker extends EventEmitter {     
     constructor(config = __uv$config) {
