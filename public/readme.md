@@ -1,9 +1,7 @@
 # To Do
 
 # FIRST
--Fix UV Search | Currently getting error 404 when searching, 404 in uv/gp/{google search}
-
--Fix UV Direct Links | Current error:  ```RangeError: Failed to construct 'Response': The status provided (0) is outside the range [200, 599].```
+-Fix UV Direct Links + Search| Current error:  ```RangeError: Failed to construct 'Response': The status provided (0) is outside the range [200, 599].```
 
 ## Second
 Once finished with UV:
