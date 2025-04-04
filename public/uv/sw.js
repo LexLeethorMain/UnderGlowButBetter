@@ -1,6 +1,6 @@
 var cacheName = 'LVcog';
 var filesToCache = [
-  '/sw.js'
+  '/uv/sw.js'
 ];
 
 self.addEventListener('install', function(e) {
