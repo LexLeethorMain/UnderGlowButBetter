@@ -6,5 +6,5 @@ self.__uv$config = { //fully editted for underglow
     handler: '/uv.handler.js',
     bundle: '/uv.bundle.js',
     config: '/uv.config.js',
-    sw: '/uv/uv.sw.js',
+    sw: '/uv.sw.js',
 };
