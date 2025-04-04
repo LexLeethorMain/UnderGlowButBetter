@@ -1,4 +1,4 @@
-importScripts("/uv.sw.js"); // According to the SW error this file needs to be in uv directory
+importScripts("/uv/uv.sw.js"); // According to the SW error this file needs to be in uv directory
 
 const sw = new UVServiceWorker();
 
