@@ -99,43 +99,80 @@ button:active {
     margin-bottom: 10px;
 }
 .footer {
- position: fixed;
-            bottom: 0; /* funny indentation error in github but ok */
-            left: 0;
-            width: 100%;
-            background-color: rgba(34, 34, 34, 0.9);
-            backdrop-filter: blur(10px);
-            display: flex;
-            justify-content: center;
-            padding: 15px 0;
-            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-        }
-        
-        .footer-nav {
-            display: flex;
-            gap: 20px;
-        }
-        
-        .footer-button {
-            padding: 12px 24px;
-            background: linear-gradient(45deg, #007bff, #00c6ff);
-            color: white;
-            border: none;
-            border-radius: 30px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
-        }
-        
-        .footer-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 7px 15px rgba(0, 123, 255, 0.5);
-        }
-        
-        .footer-button:active {
-            transform: translateY(1px);
-            box-shadow: 0 2px 5px rgba(0, 123, 255, 0.3);
-        }
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(34, 34, 34, 0.9);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.footer-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 15px;
+}
+
+.footer-button {
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #007bff, #00c6ff);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: clamp(0.75rem, 2vw, 1rem);
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+    flex: 0 1 auto;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.footer-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 15px rgba(0, 123, 255, 0.5);
+}
+
+.footer-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 5px rgba(0, 123, 255, 0.3);
+}
+
+/* Im a jingius */
+@media (max-width: 768px) {
+    .footer-nav {
+        gap: 8px;
+        padding: 0 10px;
+    }
+    
+    .footer-button {
+        padding: 8px 16px;
+        min-width: 0;
+    }
+}
+
+/* itty bitty lil phone screens */
+@media (max-width: 480px) {
+    .footer {
+        padding: 10px 0;
+    }
+    
+    .footer-nav {
+        gap: 6px;
+    }
+    
+    .footer-button {
+        padding: 6px 12px;
+        font-size: clamp(0.7rem, 1.5vw, 0.85rem);
+    }
+}
