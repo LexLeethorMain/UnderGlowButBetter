@@ -1,4 +1,4 @@
-# Files | What they do
+### Files | What they do
 
 - Flow.js | The actual proxy, renamed from proxy.js to help with unblocking
 - Package.json | Installs the packages necessary for Flow.js
