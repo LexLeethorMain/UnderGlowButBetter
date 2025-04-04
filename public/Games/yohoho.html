@@ -1,0 +1,114 @@
+<html>
+  <head>
+    <title>Google</title>
+  </head>
+  <style>
+    iframe {
+            width: 100%;
+            height: calc(100vh - 200px); 
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            background-color: #111;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        [container="iframe"] {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        [container="iframe"] iframe {
+            width: 100%; 
+        }
+    .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(34, 34, 34, 0.9);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.footer-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 15px;
+}
+
+.footer-button {
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #007bff, #00c6ff);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: clamp(0.75rem, 2vw, 1rem);
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+    flex: 0 1 auto;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.footer-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 15px rgba(0, 123, 255, 0.5);
+}
+
+.footer-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 5px rgba(0, 123, 255, 0.3);
+}
+
+@media (max-width: 768px) {
+    .footer-nav {
+        gap: 8px;
+        padding: 0 10px;
+    }
+    
+    .footer-button {
+        padding: 8px 16px;
+        min-width: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer {
+        padding: 10px 0;
+    }
+    
+    .footer-nav {
+        gap: 6px;
+    }
+    
+    .footer-button {
+        padding: 6px 12px;
+        font-size: clamp(0.7rem, 1.5vw, 0.85rem);
+    }
+}
+  </style>
+  <body>
+    <div container="iframe">
+      <iframe src="/api/flow.js?q=https://yohoho.io"></iframe>
+    </div>
+    <div class="footer"> <!-- fooger -->
+        <div class="footer-nav">
+            <a href="/ultraviolet.html"><button class="footer-button">Ultraviolet</button></a> <!-- God this shit never works -->
+            <a href="/scramjet"><button class="footer-button">Scramjet</button></a> <!-- Bypass for scramjet soon????????? -->
+            <a href="/rammerhead/public/index.html"><button class="footer-button">Rammerhead</button></a>
+            <a href="index.html"><button class="footer-button">Underglow</button></a>
+        </div>
+    </div>
+  </body>
+</html>
