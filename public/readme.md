@@ -1,7 +1,7 @@
 # To Do
 
 # FIRST
--Fix UV Direct Links + Search| Current error:  ```RangeError: Failed to construct 'Response': The status provided (0) is outside the range [200, 599].```
+-Fix UV Direct Links + Search | Current error:  ```RangeError: Failed to construct 'Response': The status provided (0) is outside the range [200, 599].```
 
 ## Second
 Once finished with UV:
