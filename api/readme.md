@@ -4,7 +4,7 @@
 
 - Package.json | Installs the packages necessary for Flow.js
 
-- Nodemon.json | Node (or starts) the proxy server
+- Nodemon.json | Node shit
 
 - Vercel.json | Tells vercel how to use this shit
 
