@@ -52,7 +52,7 @@ if (isNaN(port)) port = 8080;
 server.on("listening", () => {
     const address = server.address();
     console.log("Listening on:");
-    console.log(`\thttp://localhost:${address.port}`);
+    console.log(`\t${address.port}`);
     console.log(
         `\thttp://${
             address.family === "IPv6" ? `[${address.address}]` : address.address
