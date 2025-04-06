@@ -115,6 +115,15 @@ app.get('/api/flow.js', async (req, res) => {
   }
 });
 
+app.get('/api/sw.js', async (req, res) => {
+  try {
+    const response = await axios.get('https://scramjet.mercurywork.shop/sw.js');
+    res.set('Content-Type', 'application/javascript');
+    res.send(response.data);
+  } catch (err) {
+    res.status(500).send('Failed to fetch service worker');
+  }
+});
 app.use(express.static('public'));
 
 app.get('*', (req, res) => {
