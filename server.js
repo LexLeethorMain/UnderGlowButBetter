@@ -1,74 +1,86 @@
-
-//Lex: I had chatgpt debug this cause your setup was broken as hell
-
-import wisp from "wisp-server-node"
+import wisp from "wisp-server-node" //completely forgot server.js is needed
 import { createBareServer } from "@tomphttp/bare-server-node"
 import { uvPath } from "@titaniumnetwork-dev/ultraviolet"
-import { epoxyPath } from "@mercuryworkshop/epoxy-transport"
+import { epoxyPath } from "@mercuryworkshop/epoxy-transport";
 import { bareModulePath } from "@mercuryworkshop/bare-as-module3"
-import { baremuxPath } from "@mercuryworkshop/bare-mux/node"
-import express from "express"
-import { createServer } from "node:http"
-import { join, resolve } from "node:path"
-import { fileURLToPath } from "node:url"
+import { baremuxPath } from "@mercuryworkshop/bare-mux/node";
+import express from "express";
+import { createServer } from "node:http";
+import { join } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const bare = createBareServer("/bare/", { logErrors: true, blockLocal: false })
-const __dirname = join(fileURLToPath(import.meta.url), "..")
-const app = express()
-const publicPath = "public"
+const bare = createBareServer("/bare/", {
+	logErrors: true,
+	blockLocal: false,
+});
+const __dirname = join(fileURLToPath(import.meta.url), "..");
+const app = express();
+const publicPath = "public"; // if you renamed your directory to something else other than public
 
-app.use(express.static(publicPath))
-app.use("/uv/", express.static(uvPath))
-app.use("/epoxy/", express.static(epoxyPath))
-app.use("/baremux/", express.static(baremuxPath))
-app.use("/baremod/", express.static(bareModulePath))
+app.use(express.static(publicPath));
+app.use("/uv/", express.static(uvPath));
+app.use("/epoxy/", express.static(epoxyPath));
+app.use("/baremux/", express.static(baremuxPath));
+app.use("/baremod/", express.static(bareModulePath));
 
+app.get('/baremux/worker.js', (req, res) => {
+    res.sendFile(path.resolve('./public/worker.js'), {
+      headers: {
+        'Content-Type': 'application/javascript'
+      }
+    });
+  });
 app.use((req, res) => {
-  res.status(404)
-  res.sendFile(join(__dirname, publicPath, "404.html"))
-})
+    res.status(404);
+    res.sendFile(join(__dirname, publicPath, "404.html")); // change to your 404 page
+});
 
-const server = createServer(() => {})
+const server = createServer(app);
 
 server.on("request", (req, res) => {
-  if (req.url.endsWith("/wisp/")) {
-    res.writeHead(426, { "Content-Type": "text/plain" })
-    res.end("Wisp only supports WebSocket connections")
-  } else if (bare.shouldRoute(req)) {
-    bare.routeRequest(req, res)
-  } else {
-    app(req, res)
-  }
-})
+    if (bare.shouldRoute(req)) {
+        bare.routeRequest(req, res);
+    } else {
+        app(req, res);
+    }
+});
 
 server.on("upgrade", (req, socket, head) => {
-  if (req.url.endsWith("/wisp/")) {
-    wisp.routeRequest(req, socket, head)
-  } else if (bare.shouldRoute(req)) {
-    bare.routeUpgrade(req, socket, head)
-  } else {
-    socket.end()
-  }
-})
+    if (req.url.endsWith("/wisp/")) {
+        wisp.routeRequest(req, socket, head);
+    } else if (bare.shouldRoute(req)) {
+        bare.routeUpgrade(req, socket, head);
+    } else {
+        socket.end();
+    }
+});
 
-let port = parseInt(process.env.PORT || "")
-if (isNaN(port)) port = 8080
+let port = parseInt(process.env.PORT || "");
+
+if (isNaN(port)) port = 8080; 
 
 server.on("listening", () => {
-  const address = server.address()
-  console.log("Listening on:")
-  console.log(`\t${address.port}`)
-  console.log(`\thttp://${address.family === "IPv6" ? `[${address.address}]` : address.address}:${address.port}`)
-})
+    const address = server.address();
+    console.log("Listening on:");
+    console.log(`\t${address.port}`);
+    console.log(
+        `\thttp://${
+            address.family === "IPv6" ? `[${address.address}]` : address.address
+        }:${address.port}`
+    );
+});
 
-process.on("SIGINT", shutdown)
-process.on("SIGTERM", shutdown)
+process.on("SIGINT", shutdown);
+process.on("SIGTERM", shutdown);
 
 function shutdown() {
-  console.log("SIGTERM signal received: closing HTTP server")
-  server.close()
-  bare.close()
-  process.exit(0)
+    console.log("SIGTERM signal received: closing HTTP server");
+    server.close();
+    bare.close();
+    process.exit(0);
 }
 
-server.listen({ port })
+
+server.listen({
+    port,
+});
