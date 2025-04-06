@@ -1,0 +1,61 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/bare/(.*)",
+      "dest": "/server.js"
+    },
+    {
+      "src": "/scram/(.*)",
+      "dest": "/dist/$1"
+    },
+    {
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
+    },
+    {
+      "src": "/baremux/(.*)",
+      "dest": "/baremux/$1"
+    },
+    {
+      "src": "/epoxy/(.*)",
+      "dest": "/epoxy/$1"
+    },
+    {
+      "src": "/libcurl/(.*)",
+      "dest": "/libcurl/$1"
+    },
+    {
+      "src": "/baremod/(.*)",
+      "dest": "/baremod/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/server.js"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cross-Origin-Opener-Policy",
+          "value": "same-origin"
+        },
+        {
+          "key": "Cross-Origin-Embedder-Policy",
+          "value": "require-corp"
+        }
+      ]
+    }
+  ]
+}
