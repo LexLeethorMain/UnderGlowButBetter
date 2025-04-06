@@ -20,13 +20,13 @@ app.use("/epoxy/", express.static(epoxyPath));
 app.use("/baremux/", express.static(baremuxPath));
 app.use("/baremod/", express.static(bareModulePath));
 
-app.get('/api/sw.js', (req, res) => {
-  res.sendFile(path.resolve('./api/sw.js'), {
-    headers: {
-      'Content-Type': 'application/javascript'
-    }
+app.get('/baremux/worker.js', (req, res) => {
+    res.sendFile(path.resolve('./public/worker.js'), {
+      headers: {
+        'Content-Type': 'application/javascript'
+      }
+    });
   });
-});
 app.use((req, res) => {
     res.status(404);
     res.sendFile(join(__dirname, publicPath, "404.html")); // change to your 404 page
