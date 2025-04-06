@@ -1,10 +1,6 @@
 import axios from 'axios'; //wasn't working so I let project auto debug it.
 import express from 'express';
 import path from 'path';
-import { uvPath } from "@titaniumnetwork-dev/ultraviolet"
-import { epoxyPath } from "@mercuryworkshop/epoxy-transport"
-import { bareModulePath } from "@mercuryworkshop/bare-as-module3"
-import { baremuxPath } from "@mercuryworkshop/bare-mux/node"
 import rateLimit from 'express-rate-limit';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
@@ -14,10 +10,6 @@ const __dirname = dirname(__filename);
 
 const app = express();
 const port = process.env.PORT || 3000;
-app.use("/uv/", express.static(uvPath))
-app.use("/epoxy/", express.static(epoxyPath))
-app.use("/baremux/", express.static(baremuxPath))
-app.use("/baremod/", express.static(bareModulePath))
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
