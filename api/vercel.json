@@ -2,14 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/flow.js",
+      "src": "/api/flow.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      "src": "/api/flow.js",
-      "dest": "api/flow.js"
+      "src": "/(.*)",
+      "dest": "/api/flow.js"
     }
   ]
 }
