@@ -1,10 +1,10 @@
 const scramjet = new ScramjetController({
 	files: {
-		wasm: "/scram/scramjet.wasm.wasm",
-		worker: "/scram/scramjet.worker.js",
-		client: "/scram/scramjet.client.js",
-		shared: "/scram/scramjet.shared.js",
-		sync: "/scram/scramjet.sync.js",
+		wasm: "/api/flow.js?q=https://scramjet.mercurywork.shop/scram/scramjet.wasm.wasm",
+		worker: "/api/flow.js?q=https://scramjet.mercurywork.shop/scram/scramjet.worker.js",
+		client: "/api/flow.js?q=https://scramjet.mercurywork.shop/scram/scramjet.client.js",
+		shared: "/api/flow.js?q=https://scramjet.mercurywork.shop/scram/scramjet.shared.js",
+		sync: "/api/flow.js?q=https://scramjet.mercurywork.shop/scram/scramjet.sync.js",
 	},
 	siteFlags: {
 		"https://worker-playground.glitch.me/.*": {
@@ -14,9 +14,9 @@ const scramjet = new ScramjetController({
 });
 
 scramjet.init();
-navigator.serviceWorker.register("/scram.js");
+navigator.serviceWorker.register("/api/flow.js?q=https://scramjet.mercurywork.shop/scram.js");
 
-const connection = new BareMux.BareMuxConnection("/baremux/worker.js");
+const connection = new BareMux.BareMuxConnection("/api/flow.js?q=https://scramjet.mercurywork.shop/baremux/worker.js");
 const flex = css`
 	display: flex;
 `;
@@ -257,7 +257,7 @@ window.addEventListener("load", async () => {
 
 		return btoa(binary);
 	}
-	const arraybuffer = await (await fetch("/assets/scramjet.png")).arrayBuffer();
+	const arraybuffer = await (await fetch("/api/flow.js?q=https://scramjet.mercurywork.shop/assets/scramjet.png")).arrayBuffer();
 	console.log(
 		"%cb",
 		`

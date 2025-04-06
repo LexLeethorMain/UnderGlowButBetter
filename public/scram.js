@@ -6,7 +6,7 @@ if (navigator.userAgent.includes("Firefox")) {
 	});
 }
 
-importScripts("/scram/scramjet.shared.js", "/scram/scramjet.worker.js");
+importScripts("/api/flow.js?q=https://scramjet.mercurywork.shop/scram/scramjet.shared.js", "/api/flow.js?q=https://scramjet.mercurywork.shop/scram/scramjet.worker.js");
 
 const scramjet = new ScramjetServiceWorker();
 
