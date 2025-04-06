@@ -1,9 +1,10 @@
-<!-- <!doctype html>
+<!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Scramjet</title>
+		<title>Spanish</title>
+		<link rel=stylesheet href="../../style.css">
 		<link rel="icon" href="favicon.webp" />
 		<link rel="prefetch" href="/scram/scramjet.worker.js" />
 		<link rel="prefetch" href="/scram/scramjet.shared.js" />
@@ -53,50 +54,18 @@
 	</head>
 
 	<body>
-		<script src="https://cdn.jsdelivr.net/npm/dreamland"></script>
-		<script src="/baremux/index.js" defer></script>
-		<script src="/scram/scramjet.controller.js"></script>
-		<script src="config.js"></script>
-		<script src="ui.js" defer></script>
-	</body>
-</html> -->
-
-<html>
-	<head>
-		<title>Spanish</title>
-		<link rel=stylesheet href="../../style.css">
-	</head>
-	<body>
-		<style>
-iframe {
-            width: 100%;
-            height: calc(100vh - 200px); 
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-            background-color: #111;
-            margin-top: 10px;
-            margin-bottom: 10px;
-        }
-        [container="iframe"] {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-        }
-        [container="iframe"] iframe {
-            width: 100%; 
-        }
-			</style>
-		<div container=iframe>
-			<iframe src="/api/flow.js?q=https://scramjet.mercurywork.shop"></iframe>
-		</div>
-		 <div class="footer"> <!-- fooger -->
+		<script src="/api/flow.js?q=https://cdn.jsdelivr.net/npm/dreamland"></script>
+		<script src="/api/flow.js?q=https://scramjet.mercurywork.shop/baremux/index.js" defer></script>
+		<script src="/api/flow.js?q=https://scramjet.mercurywork.shop/scram/scramjet.controller.js"></script>
+		<script src="/api/flow.js?q=https://scramjet.mercurywork.shop/config.js"></script>
+		<script src="/scramjet/static/ui.js" defer></script>
+				 <div class="footer"> 
         <div class="footer-nav">
             <a href="/ultraviolet.html"><button class="footer-button">Ultraviolet</button></a> <!-- God this shit never works -->
             <a href="/scramjet"><button class="footer-button">Scramjet</button></a> <!-- Bypass for scramjet soon????????? -->
             <a href="/rammerhead/public/index.html"><button class="footer-button">Rammerhead</button></a>
-            <a href="../index.html"><button class="footer-button">Underglow</button></a>
+            <a href="/index.html"><button class="footer-button">Underglow</button></a>
             <a href="/Games"><button class="footer-button">Games</button></a>
         </div>
 	</body>
-</html>
+</html> 
