@@ -1,15 +1,18 @@
 import wisp from "wisp-server-node" //completely forgot server.js is needed
 import { createBareServer } from "@tomphttp/bare-server-node"
 import { uvPath } from "@titaniumnetwork-dev/ultraviolet"
-import { epoxyPath } from "@mercuryworkshop/epoxy-transport"
+import { epoxyPath } from "@mercuryworkshop/epoxy-transport";
 import { bareModulePath } from "@mercuryworkshop/bare-as-module3"
-import { baremuxPath } from "@mercuryworkshop/bare-mux/node"
+import { baremuxPath } from "@mercuryworkshop/bare-mux/node";
 import express from "express";
 import { createServer } from "node:http";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const bare = createBareServer("/bare/")
+const bare = createBareServer("/bare/", {
+	logErrors: true,
+	blockLocal: false,
+});
 const __dirname = join(fileURLToPath(import.meta.url), "..");
 const app = express();
 const publicPath = "public"; // if you renamed your directory to something else other than public
