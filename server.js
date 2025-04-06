@@ -32,7 +32,7 @@ app.use((req, res) => {
     res.sendFile(join(__dirname, publicPath, "404.html")); // change to your 404 page
 });
 
-const server = createServer();
+const server = createServer(app);
 
 server.on("request", (req, res) => {
     if (bare.shouldRoute(req)) {
