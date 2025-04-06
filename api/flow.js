@@ -116,8 +116,13 @@ app.get('/api/flow.js', async (req, res) => {
 });
 
 app.get('/api/sw.js', (req, res) => {
-  res.sendFile(path.join(__dirname, 'sw.js'));
+  res.sendFile(path.resolve('./sw.js'), {
+    headers: {
+      'Content-Type': 'application/javascript'
+    }
+  });
 });
+
 app.use(express.static('public'));
 
 app.get('*', (req, res) => {
