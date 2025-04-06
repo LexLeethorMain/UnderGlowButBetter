@@ -14,7 +14,7 @@ const scramjet = new ScramjetController({
 });
 
 scramjet.init();
-navigator.serviceWorker.register("/api/flow.js?q=https://scramjet.mercurywork.shop/sw.js");
+navigator.serviceWorker.register("/scram.js");
 
 const connection = new BareMux.BareMuxConnection("/api/flow.js?q=https://scramjet.mercurywork.shop/baremux/worker.js");
 const flex = css`
